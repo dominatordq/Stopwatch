@@ -4,15 +4,17 @@
 */
 
 function Stopwatch() {
-    this.duration = 0;
+    let duration = 0;
     let currentTime;
     let stopTime;
 
     let status = { start: false };
     // resets duration and status of stopwatch
     this.reset = function() {
-        this.duration = 0;
+        duration = 0;
         status.start = false;
+        currentTime = null;
+        stopTime = null;
     };
     // starts the stopwatch
     this.start = function() {
@@ -30,10 +32,14 @@ function Stopwatch() {
             throw new Error('Stopwatch is already stopped.');
 
         stopTime = Date.now();
-        this.duration = ((stopTime - currentTime) / 1000) + this.duration;
-        console.log(this.duration + ' s');
+        duration = ((stopTime - currentTime) / 1000) + duration;
+        console.log(duration + ' s');
         status['start'] = false;
     }
+    // getter for the duration variable
+    Object.defineProperty(this, 'duration', {
+        get: function() { return duration; }
+    });
 }
 
 const sw = new Stopwatch();
