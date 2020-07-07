@@ -31,11 +31,11 @@ function Stopwatch() {
 
         stopTime = Date.now();
         this.duration = ((stopTime - currentTime) / 1000) + this.duration;
-        console.log(this.duration);
+        console.log(this.duration + ' s');
         status['start'] = false;
     }
 }
 
 const sw = new Stopwatch();
 sw.reset();
-console.log(sw.duration);
+console.log(sw.duration + ' s');
