@@ -38,4 +38,3 @@ function Stopwatch() {
 
 const sw = new Stopwatch();
 sw.reset();
-console.log(sw.duration + ' s');
